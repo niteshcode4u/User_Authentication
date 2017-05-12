@@ -1,0 +1,28 @@
+<h3>Your Details</h3>
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Age:</strong>
+    <%= @user.age %>
+  </li>
+
+  <li>
+    <strong>Sex:</strong>
+    <%= @user.sex %>
+  </li>
+
+</ul>
+
+<%= link "Update your account", to: user_path(@conn, :edit, @user), class: "btn btn-success btn-xs" %>&emsp;&emsp;&emsp;
+<%= link "Logout your account", to: session_path(@conn, :delete), method: :delete, class: "btn btn-warning btn-xs" %>&emsp;&emsp;&emsp;
+<%= link "Delete your account", to: user_path(@conn, :delete, @user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>

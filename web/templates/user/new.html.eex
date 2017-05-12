@@ -1,0 +1,5 @@
+<h2> Fill Your details below: </h2>
+
+<%= render "form.html", changeset: @changeset, action: user_path(@conn, :create) %>
+
+<%= link "Return to Home", to: user_path(@conn, :index) %> 

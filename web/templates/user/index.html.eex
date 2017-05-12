@@ -1,0 +1,38 @@
+
+<%= if logged_in?(@conn) do %>
+  <li><%= current_user(@conn).email %></li>
+  <li><%= link "Logout", to: session_path(@conn, :delete), method: :delete %></li>
+  <br><br>
+  <h3>My Users </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>S. No.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Sex</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= for user <- @users do %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.age %></td>
+          <td><%= user.sex %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p> <strong> You need to Login with us to see and update your details. </strong> </p>
+  <%= link "Login",    to: "/login" %> <br>
+  <%= link "Register", to: user_path(@conn, :new) %>
+<% end %>
